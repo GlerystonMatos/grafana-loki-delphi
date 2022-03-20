@@ -1,0 +1,49 @@
+version: '3.9'
+services:
+  loki:
+    env_file:
+      - ./.env.local
+    image: grafana/loki:2.4.1
+    container_name: loki
+    volumes:
+      - ./loki:/data/loki
+    environment:
+      - TZ=America/Sao_Paulo
+    networks:
+      - loki_net
+
+  grafana:
+    env_file:
+      - ./.env.local
+    image: grafana/grafana:8.3.3
+    container_name: grafana
+    depends_on:
+      - loki
+    ports:
+      - 3000:3000
+    environment:
+      - TZ=America/Sao_Paulo
+    networks:
+      - loki_net
+
+  nginx:
+    env_file:
+      - ./.env.local
+    image: laurentbel/nginx-basic-auth:latest
+    container_name: nginx
+    ports:
+      - 80:80
+    depends_on:
+      - loki
+    environment: 
+      - FORWARD_HOST=loki
+      - FORWARD_PORT=3100
+      - TZ=America/Sao_Paulo
+      - BASIC_PASSWORD=123@456
+      - BASIC_USERNAME=glerystonmatos
+    networks:
+      - loki_net
+
+networks:
+  loki_net:
+    name: loki_net

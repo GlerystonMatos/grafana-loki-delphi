@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{5F4F9072-ADB4-4F28-BCF1-ECEB737652DF}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="GrafanaLokiDelphi.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="GrafanaLokiDelphi">
+        <MSBuild Projects="GrafanaLokiDelphi.dproj"/>
+    </Target>
+    <Target Name="GrafanaLokiDelphi:Clean">
+        <MSBuild Projects="GrafanaLokiDelphi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GrafanaLokiDelphi:Make">
+        <MSBuild Projects="GrafanaLokiDelphi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="GrafanaLokiDelphi"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="GrafanaLokiDelphi:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="GrafanaLokiDelphi:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
