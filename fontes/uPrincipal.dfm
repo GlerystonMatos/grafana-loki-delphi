@@ -56,6 +56,13 @@ object frmPrincipal: TfrmPrincipal
     Height = 13
     Caption = 'Senha:'
   end
+  object lbResposta: TLabel
+    Left = 16
+    Top = 209
+    Width = 49
+    Height = 13
+    Caption = 'Resposta:'
+  end
   object detEnderecoLoki: TEdit
     Left = 92
     Top = 13
@@ -76,7 +83,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 16
     Top = 140
     Width = 375
-    Height = 303
+    Height = 61
     Lines.Strings = (
       'log teste grafana-loki-delphi 0')
     TabOrder = 4
@@ -86,7 +93,7 @@ object frmPrincipal: TfrmPrincipal
     Top = 449
     Width = 65
     Height = 21
-    TabOrder = 5
+    TabOrder = 6
     Text = '10'
   end
   object btnEnviar: TButton
@@ -95,15 +102,15 @@ object frmPrincipal: TfrmPrincipal
     Width = 240
     Height = 25
     Caption = 'Enviar'
-    TabOrder = 6
+    TabOrder = 7
     OnClick = btnEnviarClick
   end
   object pbProgress: TProgressBar
     Left = 16
-    Top = 476
+    Top = 477
     Width = 375
     Height = 17
-    TabOrder = 7
+    TabOrder = 8
   end
   object detUsuario: TEdit
     Left = 62
@@ -121,38 +128,11 @@ object frmPrincipal: TfrmPrincipal
     TabOrder = 3
     Text = '123@456'
   end
-  object RESTClient: TRESTClient
-    Authenticator = HTTPBasicAuthenticator
-    Params = <>
-    Left = 306
-    Top = 154
-  end
-  object RESTRequest: TRESTRequest
-    AssignedValues = [rvConnectTimeout, rvReadTimeout]
-    Client = RESTClient
-    Method = rmPOST
-    Params = <
-      item
-        Kind = pkREQUESTBODY
-        Name = 'body34B8FFD02808482C90FD8051A08AC56F'
-        Value = 
-          '{'#13#10'    "streams": ['#13#10'        {'#13#10'            "stream": {'#13#10'       ' +
-          '         "job": "postman"'#13#10'            },'#13#10'            "values":' +
-          ' ['#13#10'                ['#13#10'                    "{{unix_epoch_in_nano' +
-          'seconds}}",'#13#10'                    "mensagem=\"log teste postman 0' +
-          '1\""'#13#10'                ]'#13#10'            ]'#13#10'        }'#13#10'    ]'#13#10'}'
-        ContentType = ctAPPLICATION_JSON
-      end>
-    Response = RESTResponse
-    Left = 307
-    Top = 204
-  end
-  object RESTResponse: TRESTResponse
-    Left = 307
-    Top = 258
-  end
-  object HTTPBasicAuthenticator: THTTPBasicAuthenticator
-    Left = 306
-    Top = 310
+  object mResposta: TMemo
+    Left = 16
+    Top = 228
+    Width = 375
+    Height = 213
+    TabOrder = 5
   end
 end
